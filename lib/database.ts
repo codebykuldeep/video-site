@@ -1,7 +1,7 @@
 import sql from 'better-sqlite3';
 import path from 'path'
-const db = new sql(path.resolve(__dirname,'database.db'));
-
+const dbPath = path.join(process.cwd(), 'database.db');
+const db = new sql(dbPath);
 
 function initDb() {
   db.exec(`
