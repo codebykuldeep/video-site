@@ -1,0 +1,61 @@
+.profile{
+    padding: 1rem;
+    background-color: white;
+    color: black;
+}
+.form{
+    margin: 20px 0;
+}
+
+.form input[type='file']{
+    display: none;
+}
+.image{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.pick{
+    cursor: pointer;
+    display: block;
+    width: 250px;
+    height: 250px;
+    border-radius: 10px;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.demo img{
+    display: block;
+    width: 250px;
+    height: 250px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+
+.btn{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+.pickbtn{
+    display: inline-block;
+    padding: 6px 16px;
+    color: white;
+    background-color: #1976d2;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+    height: 36.5px;
+}
+.error{
+    color: var(--error);
+    margin: 10px 0;
+}
+.success{
+    margin: 10px 0;
+    color: rgb(77, 153, 77);
+}

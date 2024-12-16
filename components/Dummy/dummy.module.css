@@ -1,0 +1,38 @@
+.box{
+    width:288px;
+    height:264px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.skeleton{
+    background-color: #ededed8c !important;
+    border-radius: 5px;
+}
+.skeleton:first-child{
+    border-radius: 15px;
+}
+
+
+
+/* SEARCH PAGE SKELETON */
+.search{
+    display: flex;
+    gap: 10px;
+    height: 280px;
+}
+.searchimg{
+    background-color: #ededed8c !important;
+    border-radius: 10px;
+}
+.text{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.user{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}

@@ -1,0 +1,65 @@
+.container{
+    background: url('/image/cover.jpg');
+    background-size: contain;
+    background-position: center;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+.overlay{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.box{
+   width: 500px;
+   height: 600px;
+   padding: 3rem 5rem;
+   border-radius: 15px;
+   /* background-color: #00031ced; */
+   background-color: white;
+   color: black;
+}
+
+.box h2{
+    margin-bottom: 10px;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 80%;
+    gap: 20px;
+}
+.input{
+    width: 100%;
+}
+.field{
+    color: white !important;
+}
+
+.btn{
+    align-self: center;
+}
+.btn button{
+    background-color: var(--bgColor);
+}
+
+
+.submit{
+    cursor: pointer;
+    color: var(--grey);
+}
+
+.error{
+    text-align: center;
+    color:#d32f2f;
+}

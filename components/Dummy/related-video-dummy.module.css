@@ -1,0 +1,15 @@
+.skeleton{
+    background-color: #ededed8c !important;
+    border-radius: 5px;
+}
+
+.container{
+    display: flex;
+    gap: 5px;
+}
+
+.text{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}

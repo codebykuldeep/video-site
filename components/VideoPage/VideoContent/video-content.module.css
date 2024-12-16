@@ -1,0 +1,76 @@
+.player{
+    width: 100%;
+    height: 500px;
+}
+
+.player video{
+    width: 100%;
+    height: 100%;
+}
+
+
+
+
+
+/* VIDEO DETAIL CSS */
+.detail{
+    margin: 1rem 0;
+}
+
+.profile{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+.userImg{
+    width: 40px;
+    height: 40px;
+}
+.userImg img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.userProfile{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 30px;
+}
+.userProfile div:nth-child(2){
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.dropdown{
+    margin: 20px 0 0 0;
+}
+
+.accordion{
+    background: var(--grey) !important;
+}
+
+.meta{
+    display: flex;
+    gap: 5px;
+}
+
+
+/* LIKES */
+.likes span{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.likes  span svg{
+    cursor: pointer;
+    fill: white;
+}
+
+
+

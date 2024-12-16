@@ -1,0 +1,47 @@
+/* COMMENT */
+.commentbox{
+    margin: 20px 0;
+}
+.comment{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 15px 0;
+}
+.image{
+    width: 35px;
+    height: 35px;
+
+}
+.image img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.form form{
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 5px;
+}
+.form .input{
+    flex-grow: 4;
+}
+.form .input input{
+    display: block;
+    width: 100%;
+    background-color: white;
+    padding: 5px;
+    font-size: 1.2rem;
+    border-radius: 3px;
+}
+
+
+
+.form .input input:focus{
+    outline: none;
+}

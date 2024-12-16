@@ -1,0 +1,18 @@
+.detail{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+.image{
+    width: 160px;
+    height: 160px;
+}
+.image img{
+    display: block;
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 50%;
+}

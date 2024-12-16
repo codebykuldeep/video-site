@@ -1,0 +1,21 @@
+.layout{
+    margin-top: 9rem;
+}
+
+.link{
+    margin: 1rem 0;
+    display: flex;
+    list-style: none;
+    justify-content: flex-start;
+    gap: 30px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--grey);
+    height: 100%;
+    /* position: sticky;
+    top: 75px;
+    background-color: var(--bgColor);
+    z-index: 99; */
+}
+.link li{
+    cursor: pointer;
+}

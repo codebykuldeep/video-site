@@ -1,0 +1,26 @@
+.navbar{
+   background: none !important;
+   padding: 1.5rem;
+   box-shadow: none !important;
+}
+.list{
+    display: flex;
+    justify-content: space-between;
+}
+.listItem{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+   
+}
+.listItem div{
+    cursor: pointer;
+}
+
+.link{
+    font-size: 1rem;
+    cursor: pointer;
+}
+.link:first-child{
+    width: 100px;
+}
