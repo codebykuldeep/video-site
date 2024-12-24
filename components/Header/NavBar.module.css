@@ -1,5 +1,5 @@
 .navbar{
-   background: none !important;
+   background: var(--bgColor) !important;
    padding: 1.5rem;
    box-shadow: none !important;
 }

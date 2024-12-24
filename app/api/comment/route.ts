@@ -1,5 +1,5 @@
 import { serverSession } from "@/auth";
-import { addComment } from "@/lib/comment";
+import { addComment } from "@/lib/comments";
 
 export async function POST(req:Request){
     const data =await req.json();
@@ -14,7 +14,11 @@ export async function POST(req:Request){
     const {comment,video_id} =data
     
     const user_id = user.id as string;
-    addComment(comment,video_id,user_id);
+    try {
+        await addComment(comment,video_id,user_id);
+    } catch { 
+        return Response.json({ sucess:'failed',message:'failed to add comment' })
+    }
     
     
     return Response.json({ sucess:'uploaded' })

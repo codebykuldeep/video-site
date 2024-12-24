@@ -4,15 +4,14 @@ import Image from "next/image";
 import classes from './user-detail.module.css'
 import { serverSession } from "@/auth";
 import { UserType } from "@/helper/commonTypes";
-import { getUserById } from "@/lib/user";
+import { getUserById } from "@/lib/users";
 
 
 export default async  function UserDetail() {
   const data  =await serverSession();
   const user =data?.user;
   const {id} =user as {id:string};
-  const userData = getUserById(id) as UserType;
-  
+  const userData =await getUserById(id) as UserType;
   
   
   return (

@@ -54,10 +54,6 @@ export default function UserProfile() {
                 {state.status ==='failed' && <p className={classes.error}>{state.message}</p>}
                 {state.status ==='success' && <p className={classes.success}>{state.message}</p>}
                 <Box className={classes.btn}>
-                    
-                {/* <label htmlFor="image" className={classes.pickbtn}>
-                    Select Image
-                </label> */}
                 
                 <Button onClick={handleFileCheck}
                  type={(error === null || error)  ? 'button' :'submit'}

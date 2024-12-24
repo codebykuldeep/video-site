@@ -4,7 +4,7 @@ import UserDetail from "./UserDetail";
 import { redirect } from "next/navigation";
 import UserSection from "./UserSection";
 import { serverSession } from "@/auth";
-import { getVideosByUser } from "@/lib/video";
+import { getVideosByUser } from "@/lib/videos";
 import { VideoType } from "@/helper/commonTypes";
 
 export default async function UserLayout() {
@@ -14,7 +14,7 @@ export default async function UserLayout() {
   }
   const user = session.user;
   
-  const videos = getVideosByUser(user.id as string)
+  const videos =await getVideosByUser(user.id as string)
   
   
   return (

@@ -46,6 +46,11 @@ export default function SubmitComment({updateFn}:SubmitCommentProps) {
             </Box>
         )
     }
+    {
+        !show && (
+            <Box className={classes.message}>Login to comment on the video</Box>
+        )
+    }
     </>
   )
 }

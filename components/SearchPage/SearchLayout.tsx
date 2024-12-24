@@ -1,6 +1,6 @@
 import { Box, Container } from '@mui/material'
 import classes from './search-page.module.css'
-import { getVideoForQuery } from '@/lib/video';
+import { getVideoForQuery } from '@/lib/videos';
 import { VideoCreatorType } from '@/helper/commonTypes';
 import { waitFunction } from '@/helper/helperFns';
 import { Suspense } from 'react';
@@ -29,7 +29,7 @@ export default async function SearchLayout({query}:searchLayoutProps) {
 
 
 async function InsertSearch({query}:searchLayoutProps) {
-  const result = getVideoForQuery(query) as VideoCreatorType[];
+  const result =await getVideoForQuery(query) as VideoCreatorType[];
   await waitFunction(2000);
   return (
    <SearachResult videos={result}></SearachResult>

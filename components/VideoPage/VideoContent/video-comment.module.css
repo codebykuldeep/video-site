@@ -45,3 +45,7 @@
 .form .input input:focus{
     outline: none;
 }
+
+.message{
+    padding: 12px 0;
+}

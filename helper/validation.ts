@@ -1,4 +1,4 @@
-import { ErrorStateType, ErrorType, UserType, VideoFormType } from "./commonTypes";
+import { ErrorStateType, ErrorType, uploadDataType, UserType, VideoFormType } from "./commonTypes";
 
 function emailValidation(value:string):[string,boolean]{
     if(value.trim()===''){
@@ -23,12 +23,12 @@ function passwordValidation(value:string):[string,boolean]{
     return ['',false];
 }
 
-function nameValidation(value:string):[string,boolean]{
-    if(value.trim() ===''){
-        return ['This field is required',true];
-    }
-    return ['',false];
-}
+// function nameValidation(value:string):[string,boolean]{
+//     if(value.trim() ===''){
+//         return ['This field is required',true];
+//     }
+//     return ['',false];
+// }
 function fieldValidation(value:string):[string,boolean]{
     if(value.trim() ===''){
         return ['This field is required',true];
@@ -58,8 +58,8 @@ export function validation(title:string,value:string):[string,boolean]{
     return fieldValidation(value);
 }
 export function validateState(state:ErrorStateType ){
-    for(let key in state){
-        let value = state[key as keyof ErrorStateType ]?.value as string
+    for(const key in state){
+        const value = state[key as keyof ErrorStateType ]?.value as string
        
         const [msg, status] = validation(key,value);
         state = { ...state, [key]: {
@@ -71,10 +71,10 @@ export function validateState(state:ErrorStateType ){
     return state;
 }
 
-export function serverValidation(user:UserType){
+export function serverValidation(user:UserType|uploadDataType){
     const error:ErrorType={};
-    for(let [key,value] of Object.entries(user)){
-        let [msg,status] =validation(key,value)
+    for(const [key,value] of Object.entries(user)){
+        const [msg,status] =validation(key,value)
         if(status){
             error[key] =msg;
         }
@@ -87,8 +87,8 @@ export function serverValidation(user:UserType){
 
 
 export function validateFormState(state:VideoFormType ){
-    for(let key in state){
-        let value = state[key as keyof VideoFormType ]?.value as string
+    for(const key in state){
+        const value = state[key as keyof VideoFormType ]?.value as string
        
         const [msg, status] = validation(key,value);
         state = { ...state, [key]: {
@@ -102,9 +102,9 @@ export function validateFormState(state:VideoFormType ){
 
 export function validateResult(state:VideoFormType){
     let result = true;
-    for(let key in state){
-        let status = state[key as keyof VideoFormType ]?.status as boolean;
-        let value = state[key as keyof VideoFormType ]?.value as string;
+    for(const key in state){
+        const status = state[key as keyof VideoFormType ]?.status as boolean;
+        const value = state[key as keyof VideoFormType ]?.value as string;
         result =result && !status && Boolean(value)
     }
     return result;
@@ -112,9 +112,9 @@ export function validateResult(state:VideoFormType){
 
 export function errorResult(state:ErrorStateType){
     let result = true;
-    for(let key in state){
-        let status = state[key as keyof ErrorStateType ]?.status as boolean;
-        let value = state[key as keyof ErrorStateType ]?.value as string;
+    for(const key in state){
+        const status = state[key as keyof ErrorStateType ]?.status as boolean;
+        const value = state[key as keyof ErrorStateType ]?.value as string;
         result =result && !status && Boolean(value)
     }
     return result;

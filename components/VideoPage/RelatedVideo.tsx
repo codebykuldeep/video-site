@@ -5,7 +5,7 @@ import { VideoCreatorType } from '@/helper/commonTypes'
 import { Suspense } from 'react'
 import { waitFunction } from '@/helper/helperFns'
 import RelatedVideoDummy from '../Dummy/RelatedVideoDummy'
-import { getRelatedVideos } from '@/lib/video'
+import { getRelatedVideos } from '@/lib/videos'
 import Link from 'next/link'
 
 
@@ -25,7 +25,7 @@ export default function RelatedVideo({ video}: {video: VideoCreatorType}) {
 
 
 async function InsertRelatedVideo({video}:{video:VideoCreatorType}) {
-    const data= getRelatedVideos(video.category) as VideoCreatorType[];
+    const data=await getRelatedVideos(video.category) as VideoCreatorType[];
     
     
     await waitFunction(2000);

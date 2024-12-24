@@ -64,7 +64,7 @@ export default function Signup() {
     if(valid){
       setSubmit(true);
       const {name,email,password} =errorState;
-      const message:string = await sendSignUpRequest(name!.value,email.value,password.value)
+      const message = await sendSignUpRequest(name!.value,email.value,password.value) as string;
       
       if(!Boolean(message)){
         

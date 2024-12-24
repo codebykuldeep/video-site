@@ -13,9 +13,6 @@ interface UploadFormProps{
 
 export default function UploadForm({formState,handleChange,handleMedia}:UploadFormProps) {
     
-    
-    //  const [image,setImage] =useState<any>(null)
-    //  const [video,setVideo] =useState<any>(null)
     const [sizeError,setSizeError] =useState(false);
   
   const handleCategory = (event: SelectChangeEvent) => {
@@ -26,7 +23,6 @@ export default function UploadForm({formState,handleChange,handleMedia}:UploadFo
     let file;
     if(event.target.files){
       file =event.target.files[0];
-      // setVideo(file);
       handleMedia('video');
     }
     if(file){
@@ -42,7 +38,6 @@ export default function UploadForm({formState,handleChange,handleMedia}:UploadFo
 
   function handleImage(event:React.ChangeEvent<HTMLInputElement>){
     if(event.target.files){
-      // setImage(event.target.files[0]);
       handleMedia('image');
     }
   }

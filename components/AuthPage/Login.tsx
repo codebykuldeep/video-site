@@ -62,7 +62,7 @@ export default function Login() {
     if(valid){
       setSubmit(true);
       const {email,password} =errorState;
-      const message:string = await sendLoginRequest(email.value,password.value)
+      const message = await sendLoginRequest(email.value,password.value) as string;
       
       if(!Boolean(message)){ 
         return redirect('/home');
@@ -91,9 +91,6 @@ export default function Login() {
             <div className={classes.btn}>
               <ButtonField validate={handleValidation} valid={valid}>{submit ?'Please Wait...' : "Login"}</ButtonField>
             </div>
-            {/* <div>
-              <Button onClick={()=>signIn('github',{redirect:false})}>Sign in with Github</Button>
-            </div> */}
           </form>
           <div>If you are new user ,<Link href={'/auth?mode=signup'}><span className={classes.submit}>Click Here</span></Link></div>
         </div>

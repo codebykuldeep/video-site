@@ -11,8 +11,7 @@ export default function AuthLayout() {
   return (
     <div className={classes.container}>
       <div className={classes.overlay}>
-        {mode !== 'signup' &&  <Login/> }
-        {mode === 'signup' && <Signup/> }
+        {mode === 'signup' ? <Signup/> : <Login/> }
       </div>
     </div>
   );

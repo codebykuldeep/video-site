@@ -4,23 +4,22 @@ import { serverSession } from "@/auth";
 import { credType } from "@/helper/authTypes";
 import { UserType } from "@/helper/commonTypes";
 import { serverValidation } from "@/helper/validation";
-import { getUser, insertUser, insertUserAll, updateWholeUserProfile } from "@/lib/user";
+import { getUser, insertUser, insertUserAll, updateWholeUserProfile } from "@/lib/users";
 import { User } from "next-auth";
-import { useSession } from "next-auth/react";
 
-import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 
 export async function getUserForAuth(credentials:credType) {
-    const {type} =credentials as any;
+    const {type} =credentials as {type:string};
     let user;
+    
     if(type === 'login'){
         try {
            user =await loginAction(credentials as credType);
            return user;
-        } catch (error:any) {
-           throw new Error(error.message);
+        } catch (error) {
+           throw new Error((error as Error).message);
         }
        }
 
@@ -29,10 +28,8 @@ export async function getUserForAuth(credentials:credType) {
         
             user =await signUpAction(credentials as credType);
             return user;
-         } catch (error:any) {
-           
-           
-            throw new Error(error.message);
+         } catch (error) {
+            throw new Error((error as Error).message);
          }
         }
 
@@ -41,7 +38,7 @@ export async function getUserForAuth(credentials:credType) {
 
 export async function signUpAction(credentials: credType) {
   const { name, email, password } = credentials;
-  let data: UserType = { name, email, password };
+  const data: UserType = { name, email, password };
   
   
   const error = serverValidation(data);
@@ -53,22 +50,22 @@ export async function signUpAction(credentials: credType) {
 
   try {
 
-    const user: any = getUser(data.email);
+    const user = await getUser(data.email);
     
     if(user){
         throw new Error('Email exists already')
     }
-    const res = insertUser(data);
+    const res = await  insertUser(data);
     
-    return {...credentials ,id:res.lastInsertRowid};
-  } catch (error: any) {
-    throw new Error(error.message)
+    return {...credentials ,...res};
+  } catch (error) {
+    throw new Error((error as Error).message)
   }
 }
 
 export async function loginAction(credentials: credType) {
   const { email, password } = credentials;
-  let data: UserType = { email, password };
+  const data: UserType = { email, password };
 
   const error = serverValidation(data);
   
@@ -79,7 +76,7 @@ export async function loginAction(credentials: credType) {
   }
 
   try {
-    const user: any = getUser(data.email);
+    const user = await getUser(data.email) as UserType;
     if(!user){
         throw new Error('User not found.Check your credentials.')
     }
@@ -89,24 +86,24 @@ export async function loginAction(credentials: credType) {
     } else {
       throw new Error(`Please check your crendentials`);
     }
-  } catch (error: any) {
-    throw new Error(error.message);
+  } catch (error) {
+    throw new Error((error as Error).message);
   }
 }
 
 export async function providerloginAction(user:User) {
     try {
         try {
-            const userInDB =getUser(user.email as string)
+            const userInDB = await getUser(user.email as string)
             if(!userInDB){
-                insertUserAll(user as UserType);
+                await insertUserAll(user as UserType);
             }
-            updateWholeUserProfile(user as UserType);
-        } catch (error:any) {
-            throw new Error(error.message)
+            await updateWholeUserProfile(user as UserType);
+        } catch (error) {
+            throw new Error((error as Error).message)
         }
-    } catch (error:any) {
-        throw new Error(error.message)
+    } catch (error) {
+        throw new Error((error as Error).message)
     }
   }
 

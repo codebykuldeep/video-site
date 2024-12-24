@@ -102,7 +102,7 @@ export interface VideoType{
 
   export interface LikeType{
     id:string;
-    like:string;
+    liketype:string;
     user_id:string;
     video_id:string;
   }
@@ -113,17 +113,7 @@ export interface VideoType{
     message:string;
   }
 
-  
 
-
-//   export interface VideoFormDataType{
-//     image: string,
-//     video: string,
-//     title: string,
-//     description: string,
-//     cloud: string,
-//     category: string
-//   }
 
   export interface uploadDataType{
     title:string;

@@ -2,15 +2,14 @@ import { Box, Container } from "@mui/material"
 import classes from './video-page.module.css'
 import VideoContent from "./VideoContent"
 import RelatedVideo from "./RelatedVideo"
-import VideoIncreaseCount from "./VideoIncreaseCount"
-import { getVideoWithCreatorById } from "@/lib/video"
+import { getVideoWithCreatorById } from "@/lib/videos"
 import { VideoCreatorType } from "@/helper/commonTypes"
 import { notFound } from "next/navigation"
 
 async function PageLayout({ params,}: {params: Promise<{ id: string }>;}) {
   const {id} =await params;
   
-  const data = getVideoWithCreatorById(id) as VideoCreatorType;
+  const data =await getVideoWithCreatorById(id) as VideoCreatorType;
   if(!data){
     notFound();
   }
@@ -25,7 +24,6 @@ async function PageLayout({ params,}: {params: Promise<{ id: string }>;}) {
             <RelatedVideo video={data}/>
         </Box>
     </Container>
-    <VideoIncreaseCount/>
     </>
   )
 }

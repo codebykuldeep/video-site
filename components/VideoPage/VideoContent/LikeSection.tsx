@@ -16,7 +16,7 @@ interface LikeSectionProps {
   video: VideoCreatorType;
   like: number;
   dislike: number;
-  likeFromDB:{like:string};
+  likeFromDB:{liketype:string};
 }
 
 type LikeStatus = "LIKE" | "DISLIKE" | "NULL";
@@ -33,10 +33,11 @@ export default function LikeSection({
     dislike: +dislike,
   });
   
-  const [likeState, setLikeState] = useState<LikeStatus>(!likeFromDB ? 'NULL' :(Boolean(likeFromDB.like) ? 'LIKE' : 'DISLIKE'));
+  const [likeState, setLikeState] = useState<LikeStatus>(!likeFromDB ? 'NULL' :(Boolean(likeFromDB.liketype) ? 'LIKE' : 'DISLIKE'));
   const [likeOnce,setLikeOnce] =useState(Boolean(likeFromDB));
+  const {status} = useSession(); 
+
   
-   const {status} = useSession(); 
    
    async function handleUpdate(current:LikeStatus){
     if(status !== 'authenticated'){

@@ -3,7 +3,7 @@ import classes from "./trending-section.module.css";
 
 import Grid from "@mui/material/Grid2";
 import VideoList from "./VideoList";
-import { getVideosWithCreators } from "@/lib/video";
+import { getVideosWithCreators } from "@/lib/videos";
 import { Suspense } from "react";
 import { VideoCreatorType } from "@/helper/commonTypes";
 import { waitFunction } from "@/helper/helperFns";
@@ -28,8 +28,8 @@ export default function  TrendingSection() {
 }
 
 async function VideoInsert(){
-  const data = getVideosWithCreators();
-  await waitFunction(2000);
+  const data = await getVideosWithCreators();
+  await waitFunction(1500);
 
   return <VideoList videos={data as VideoCreatorType[]} />;
 }

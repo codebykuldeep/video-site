@@ -1,6 +1,5 @@
 import SearchLayout from '@/components/SearchPage/SearchLayout'
 import { redirect } from 'next/navigation';
-import React from 'react'
 
 interface searchPageProps{
   searchParams:Promise<{ query: string }>

@@ -15,14 +15,15 @@ interface VideoDetailProps{
 }
 
 export default async function VideoDetail({video}:VideoDetailProps) {
-  const [like,dislike] =getLikesCount(video.id);
+  const [like,dislike] =await getLikesCount(video.id);
   
   const session = await serverSession();
   let user:userSession;
   let userLikeStatus
   if(session){
     user =session.user as userSession;
-    userLikeStatus = getUserLikeStatus(user!.id as string,video.id)
+    userLikeStatus =await getUserLikeStatus(user!.id as string,video.id)
+    
   }
   
    
@@ -34,7 +35,7 @@ export default async function VideoDetail({video}:VideoDetailProps) {
         <Box className={classes.userImg}><Image src={video.image || '/image/user.png'} height={50} width={100} alt="user profile"/></Box>
         <Box className={classes.userProfile}>
           <div>{video.name}</div>
-          <LikeSection video={video} like={like} dislike={dislike} likeFromDB={userLikeStatus as {like:string}}/>
+          <LikeSection video={video} like={like} dislike={dislike} likeFromDB={userLikeStatus as {liketype:string}}/>
         </Box>
     </Box>
     <Box className={classes.dropdown}>  

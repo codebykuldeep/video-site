@@ -1,7 +1,7 @@
-import { AuthOptions, getServerSession, Session, User } from "next-auth"
+import { AuthOptions, getServerSession, User,  } from "next-auth"
 import GitHubProvider from "next-auth/providers/github";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { getUserForAuth, loginAction, providerloginAction, signUpAction } from "./utils/user-auth";
+import { getUserForAuth, providerloginAction } from "./utils/user-auth";
 import { credType } from "./helper/authTypes";
 
 
@@ -21,7 +21,7 @@ const authOptions: AuthOptions = {
         },
         async authorize(credentials){
             
-          let user = getUserForAuth(credentials as credType);
+          const user =(await getUserForAuth(credentials as credType) as unknown) as User;
           
           return user;
         }
@@ -31,7 +31,7 @@ const authOptions: AuthOptions = {
     strategy: "jwt", 
   },
   callbacks: {
-    async signIn({ user, account, profile }) {
+    async signIn({ user, account }) {
       if (account!.provider === 'github') {
         providerloginAction(user);
       }
