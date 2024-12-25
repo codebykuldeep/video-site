@@ -32,6 +32,8 @@ export default function LikeSection({
     like: +like,
     dislike: +dislike,
   });
+  console.log('likeDb',likeFromDB);
+  console.log('like',like , "  ",dislike);
   
   const [likeState, setLikeState] = useState<LikeStatus>(!likeFromDB ? 'NULL' :(Boolean(likeFromDB.liketype) ? 'LIKE' : 'DISLIKE'));
   const [likeOnce,setLikeOnce] =useState(Boolean(likeFromDB));
