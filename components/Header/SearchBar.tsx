@@ -5,6 +5,7 @@ import { FormEvent, useRef } from 'react';
 import { redirect } from 'next/navigation';
 
 
+
 export default function SearchBar() {
   const inputRef =useRef<HTMLInputElement>(null);
 
@@ -16,6 +17,7 @@ export default function SearchBar() {
     }
     
     const query = inputRef.current!.value;
+   
     redirect(`/search?query=${query}`)
   }
   return (

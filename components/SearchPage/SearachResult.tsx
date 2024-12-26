@@ -7,12 +7,14 @@ import { useState } from 'react'
 import DOWN from '@mui/icons-material/ArrowDownward';
 import UP from '@mui/icons-material/ArrowUpward';
 
+
+
 export default function SearachResult({videos}:{videos:VideoCreatorType[]}) {
     const [result,setResult] =useState<VideoCreatorType[]>(videos);
     const [views,setViews] = useState(false);
     const [date,setDate] = useState(false);
 
-
+    
     function handleViewSort(){
         if(!views){
             const sortedArr = result.toSorted((a,b)=>Number(a.count) - Number(b.count));
