@@ -1,7 +1,7 @@
 import { Accordion, AccordionDetails, AccordionSummary, Box } from "@mui/material";
 import classes from './video-content.module.css'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-
+import Link from 'next/link'
 
 import Image from "next/image";
 import { userSession, VideoCreatorType } from "@/helper/commonTypes";
@@ -34,7 +34,7 @@ export default async function VideoDetail({video}:VideoDetailProps) {
     <Box className={classes.profile}>
         <Box className={classes.userImg}><Image src={video.image || '/image/user.png'} height={50} width={100} alt="user profile"/></Box>
         <Box className={classes.userProfile}>
-          <div>{video.name}</div>
+          <div><Link href={`/creator/${video.user_id}`}>{video.name}</Link></div>
           <LikeSection video={video} like={like} dislike={dislike} likeFromDB={userLikeStatus as {liketype:string}}/>
         </Box>
     </Box>
