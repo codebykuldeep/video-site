@@ -60,7 +60,7 @@ export default function VideoComment({video,comments}:VideoCommentProps) {
             <Box key={comment.created_at} className={classes.comment}>
             <Box className={classes.image}>
               <Image
-                src={"/image/user.png"}
+                src={comment.image || "/image/user.png"}
                 height={35}
                 width={35}
                 alt="comment user profile"

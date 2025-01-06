@@ -85,8 +85,16 @@ export async function uploadPicAction(prevState:formActionState,formData:FormDat
         const {secure_url:imgURL} =  await UploadFileToCloud(ImagePath,'image')
         deleteFile(ImagePath);
         await updateUserPhoto(imgURL,user.id as string);
-    } catch {
-        return {status:'failed',message:'Upload failed.Please try later..'}
+    } catch(error) {
+        let msg = '';
+        if(typeof error === 'string'){
+            msg = error
+        }
+        else{
+            msg = (error as {message:string}).message;
+        }
+        console.log(error);
+        return {status:'failed',message:msg}
     }
     revalidatePath('/user','page')
     return {status:'success',message:'Upload successful.'};
