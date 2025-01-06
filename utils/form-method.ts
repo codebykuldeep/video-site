@@ -81,7 +81,12 @@ export async function uploadPicAction(prevState:formActionState,formData:FormDat
 
     try {
         const Imagefilename = await writeFileOnServer(image);
-        const ImagePath = path.join(process.cwd(), "public/video/" + Imagefilename);
+        const ImagePath = path.resolve('public','video',Imagefilename);
+        // console.log(path.join(process.cwd(), "public/video/" + Imagefilename));
+        // console.log('resolve');
+        // console.log(path.resolve('public','video',Imagefilename));
+        
+        
         const {secure_url:imgURL} =  await UploadFileToCloud(ImagePath,'image')
         deleteFile(ImagePath);
         await updateUserPhoto(imgURL,user.id as string);
